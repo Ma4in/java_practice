@@ -1,10 +1,9 @@
-import java.io.IOException;
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Comparator;
 
-
-public class Extensions {
+public class extentions {
     public static String[] rowsInput() 
         throws IOException
     {
@@ -20,14 +19,6 @@ public class Extensions {
         }
 
         return strings;
-    }
-
-    public static Double distance(double[] p1, double[] p2)
-    {
-        double dx2, dy2;
-        dx2 = Math.pow(p1[0] - p2[0], 2);
-        dy2 = Math.pow(p1[1] - p2[1], 2);
-        return Math.sqrt(dx2+dy2);
     }
 }
 

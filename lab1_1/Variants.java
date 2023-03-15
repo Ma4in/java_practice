@@ -2,6 +2,7 @@ import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class Variants
 {
@@ -25,10 +26,12 @@ public class Variants
     {
         String[] strings = Extensions.rowsInput();
 
-        Arrays.sort(strings);
+        Comparator<String> stringLengthComparator = new StringLengthSort();
+
+        Arrays.sort(strings, stringLengthComparator);
 
         for(String row : strings){
-            System.out.println(row);
+            System.out.println(row + " : " +row.length());
         }
     }
 
@@ -115,9 +118,10 @@ public class Variants
             if (word.length() == lenght){
                 char[] w = word.toLowerCase().toCharArray();
                 for (int i = 0; i < Data.letters.length; i++){
-                    if(w[0] == Data.letters[i]){ confirm = true;}
+                    if(w[0] == Data.letters[i]) {confirm = true;}
                 }
-                if (!confirm){row += word + " ";} else { confirm = false;}
+                if (confirm) {row += word + " ";}
+                confirm = false;
             } else {row += word + " ";}
         }
         return row;
