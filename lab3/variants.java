@@ -125,5 +125,41 @@ public class variants {
         }
     }
 
-    
+    public static void z7()
+        throws IOException
+    {
+        String[] strings = extentions.rowsInput();
+        for (String word : strings){
+            boolean uniqOnly = true;
+            ArrayList<Character> uniqChars = new ArrayList<Character>();
+            for (char ch : word.toCharArray()){
+                if (uniqChars.contains(ch))uniqOnly = false;
+                else uniqChars.add(ch);
+            }
+            if (uniqOnly) {
+                System.out.println("Word only with uniq characters : " + word);
+                return;
+            }
+        }
+    }
+
+    public static void z8()
+        throws IOException
+    {
+        String[] strings = extentions.rowsInput();
+        boolean first = true;
+        for (String word : strings){
+            boolean numbersOnly = true;
+            for (char ch : word.toCharArray()){
+                if ((int)ch <48 || (int)ch > 57) numbersOnly = false;
+            }
+
+            if (numbersOnly){
+                if (word.equals(new StringBuilder(word).reverse().toString())){
+                    if (!first) System.out.println("Second palindrom number is : " + word);
+                    first = false;
+                }
+            }
+        }
+    }
 }
